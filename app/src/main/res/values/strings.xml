@@ -1,0 +1,28 @@
+<resources>
+    <string name="app_name">Dev_Buster</string>
+
+    <!--Generic Names-->
+    <string name="Back">Voltar</string>
+    <string name="Titulo">DEV_BUSTER</string>
+    <string name="tv_msg">O que deseja fazer?</string>
+
+    <!--User Authentication-->
+    <string name="UserName">UserName</string>
+    <string name="et_PassWordName">PassWordName</string>
+    <string name="SignIn">Login</string>
+    <string name="SignOn">Cadastrar</string>
+    <string name="hint_login">Login</string>
+    <string name="hint_password">Password</string>
+    <string name="hint_old_password">Senha antiga</string>
+    <string name="hint_new_password">Nova senha</string>
+    <string name="update_password">Atualizar</string>
+    <string name="btn_forgot_login_or_password">Esqueci minha senha/login</string>
+
+    <!--Main Activity-->
+    <string name="btn_CreateMedia">Cadastrar Mídia</string>
+    <string name="btn_ListMedia">Listar Mídia</string>
+    <string name="btn_DeleteMedia">Deletar Mídia</string>
+    <string name="btn_UpdateMedia">Atualizar Mídia</string>
+
+
+</resources>
