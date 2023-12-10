@@ -19,7 +19,7 @@ public class ListMedia extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_list_media);
 
-        this.btnBackList = findViewById(R.id.btnBackList);
+        this.btnBackList = findViewById(R.id.btnBackListL);
 
         this.setOnClickListenerBack(btnBackList);
 

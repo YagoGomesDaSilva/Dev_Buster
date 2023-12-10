@@ -20,7 +20,7 @@ public class UpdateMedia extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_update_media);
 
-        this.btnBackUpdate = findViewById(R.id.btnBackUpdate);
+        this.btnBackUpdate = findViewById(R.id.btnBackUpdateU);
 
         this.setOnClickListenerBack(btnBackUpdate);
     }

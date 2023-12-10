@@ -19,7 +19,7 @@ public class DeleteMedia extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_delete_media);
 
-        this.btnBackDelete = findViewById(R.id.btnBackDelete);
+        this.btnBackDelete = findViewById(R.id.btnBackDeleteD);
 
         this.setOnClickListenerBack(btnBackDelete);
 

@@ -41,13 +41,13 @@ public class CreateMedia extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_create_media);
 
-        this.idMedia = findViewById(R.id.idMedia);
-        this.mediaName = findViewById(R.id.mediaName);
-        this.mediaDuration = findViewById(R.id.mediaDuration);
-        this.radioGroup = findViewById(R.id.radioGroup);
-        this.btnRegisterMedia = findViewById(R.id.teste);
-        this.image = findViewById(R.id.imgMedia);
-        this.btnBackCreate = findViewById(R.id.btnBackCreate);
+        this.idMedia = findViewById(R.id.idMediaC);
+        this.mediaName = findViewById(R.id.mediaNameC);
+        this.mediaDuration = findViewById(R.id.mediaDurationC);
+        this.radioGroup = findViewById(R.id.radioGroupU);
+        this.btnRegisterMedia = findViewById(R.id.btnUpdate);
+        this.image = findViewById(R.id.imgMediaC);
+        this.btnBackCreate = findViewById(R.id.btnBackUpdateC);
 
         this.setOnClickListenerRegister(btnRegisterMedia, idMedia, mediaName, mediaDuration, radioGroup, image);
         this.setOnClickListenerImg(image);

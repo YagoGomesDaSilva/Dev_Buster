@@ -7,21 +7,42 @@
     android:background="#FAF5D6"
     tools:context=".CRUD.DeleteMedia">
 
+    <EditText
+        android:id="@+id/idMediaD"
+        android:layout_width="300dp"
+        android:layout_height="75dp"
+        android:layout_marginTop="150dp"
+        android:ems="10"
+        android:hint="@string/mediaIdHint"
+        android:inputType="number"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/textView6" />
+
     <Button
-        android:id="@+id/btnBackDelete"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="28dp"
-        android:layout_marginBottom="60dp"
+        android:id="@+id/btnDelete"
+        android:layout_width="125dp"
+        android:layout_height="75dp"
+        android:layout_marginTop="100dp"
+        android:text="@string/btn_DeleteMedia"
+        android:textColor="@android:color/holo_orange_light"
+        app:backgroundTint="#0E229C"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/idMediaD" />
+
+    <Button
+        android:id="@+id/btnBackDeleteD"
+        android:layout_width="125dp"
+        android:layout_height="75dp"
         android:text="@string/Back"
         android:textColor="@android:color/holo_orange_light"
         app:backgroundTint="#0E229C"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.498"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/teste"
-        app:layout_constraintVertical_bias="0.093" />
+        app:layout_constraintTop_toBottomOf="@+id/btnDelete"
+        app:layout_constraintVertical_bias="0.343" />
 
     <TextView
         android:id="@+id/textView6"
