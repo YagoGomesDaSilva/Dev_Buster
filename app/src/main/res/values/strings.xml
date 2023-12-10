@@ -25,4 +25,16 @@
     <string name="btn_UpdateMedia">Atualizar Mídia</string>
 
 
+    <string name="mediaIdHint">Código</string>
+    <string name="mediaNameHint">Nome</string>
+    <string name="mediaDurationHint">Duração (Em minutos)</string>
+    <string name="actionGenreHint">Ação</string>
+    <string name="comedyGenreHint">Comédia</string>
+    <string name="sciFiGenreHint">Sci-Fi</string>
+    <string name="adventureGenreHint">Aventura</string>
+    <string name="terrorGenreHint">Terror</string>
+    <string name="romanceGenreHint">Romance</string>
+
+
+    <string name="registerMediaButtonValue">Cadastrar</string>
 </resources>

@@ -11,7 +11,7 @@ public class BancoAdmin extends SQLiteOpenHelper {
 
     @Override
     public void onCreate(SQLiteDatabase banco) {
-        banco.execSQL("CREATE TABLE MEDIA (ID_CODIGO_PRODUTO INT PRIMARY KEY, NOME TEXT, DESCRICAO TEXT, ESTOQUE INT )");
+        banco.execSQL("CREATE TABLE PRODUTOS (ID INT PRIMARY KEY, NOME TEXT, DURATION INT, GENRE TEXT, IMAGE BLOB)");
     }
 
     @Override
