@@ -32,7 +32,7 @@ public class CreateMedia extends AppCompatActivity {
 
     RadioGroup radioGroup;
 
-    Button btnRegisterMedia;
+    Button btnRegisterMedia, btnBackCreate;
 
     ImageView image;
 
@@ -47,9 +47,12 @@ public class CreateMedia extends AppCompatActivity {
         this.radioGroup = findViewById(R.id.radioGroup);
         this.btnRegisterMedia = findViewById(R.id.teste);
         this.image = findViewById(R.id.imgMedia);
+        this.btnBackCreate = findViewById(R.id.btnBackCreate);
 
         this.setOnClickListenerRegister(btnRegisterMedia, idMedia, mediaName, mediaDuration, radioGroup, image);
         this.setOnClickListenerImg(image);
+        this.setOnClickListenerBack(btnBackCreate);
+
     }
 
     private void setOnClickListenerRegister(Button btnRegisterMedia, TextView idMedia, TextView mediaName, TextView mediaDuration, RadioGroup radioGroup, ImageView image){
@@ -127,6 +130,15 @@ public class CreateMedia extends AppCompatActivity {
         drawable.setBounds(0, 0, drawable.getIntrinsicWidth(), drawable.getIntrinsicHeight());
         drawable.draw(new Canvas(bitmap));
         return bitmap;
+    }
+
+    private void setOnClickListenerBack(Button btn ){
+        btn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                BackIntent();
+            }
+        });
     }
 
     private void BackIntent() {

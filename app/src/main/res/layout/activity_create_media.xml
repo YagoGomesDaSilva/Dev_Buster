@@ -4,7 +4,38 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="#FAF5D6"
     tools:context=".CRUD.CreateMedia">
+
+    <Button
+        android:id="@+id/btnBackCreate"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="28dp"
+        android:text="@string/Back"
+        android:textColor="@android:color/holo_orange_light"
+        app:backgroundTint="#0E229C"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.498"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/teste"
+        app:layout_constraintVertical_bias="0.093" />
+
+    <TextView
+        android:id="@+id/textView3"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:background="#0E229C"
+        android:gravity="center"
+        android:text="@string/Titulo"
+        android:textAlignment="center"
+        android:textColor="@android:color/holo_orange_light"
+        android:textSize="50sp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
 
     <EditText
         android:id="@+id/idMedia"
@@ -12,8 +43,8 @@
         android:layout_height="wrap_content"
         android:layout_marginTop="92dp"
         android:ems="10"
-        android:inputType="text"
         android:hint="@string/mediaIdHint"
+        android:inputType="text"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.527"
         app:layout_constraintStart_toStartOf="parent"
@@ -85,18 +116,19 @@
         app:layout_constraintHorizontal_bias="0.694"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/radioGroup"
-        app:srcCompat="@android:drawable/btn_dropdown"
-        />
+        app:srcCompat="@android:drawable/btn_dropdown" />
 
     <Button
         android:id="@+id/teste"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_marginTop="28dp"
         android:text="@string/registerMediaButtonValue"
-        app:layout_constraintBottom_toBottomOf="parent"
+        android:textColor="@android:color/holo_orange_light"
+        app:backgroundTint="#0E229C"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.498"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/imgMedia"
-        app:layout_constraintVertical_bias="0.186" />
+        app:layout_constraintTop_toBottomOf="@+id/imgMedia" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
