@@ -13,6 +13,6 @@ dependencyResolutionManagement {
     }
 }
 
-rootProject.name = "Dev_Buster"
+rootProject.name = "DevBuster"
 include(":app")
  

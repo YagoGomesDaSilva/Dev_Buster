@@ -1,4 +1,4 @@
-package br.com.god.dev_buster;
+package br.ufrn.imd.devbuster;
 
 import org.junit.Test;
 

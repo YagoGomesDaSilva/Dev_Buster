@@ -1,7 +1,7 @@
 <resources>
-    <string name="app_name">Dev_Buster</string>
+    <string name="app_name">DevBuster</string>
 
-    <!--Generic Names-->
+    !--Generic Names-->
     <string name="Back">Voltar</string>
     <string name="Titulo">DEV_BUSTER</string>
     <string name="tv_msg">O que deseja fazer?</string>

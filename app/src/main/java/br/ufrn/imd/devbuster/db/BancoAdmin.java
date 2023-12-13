@@ -1,4 +1,4 @@
-package br.com.god.dev_buster.DataBase;
+package br.ufrn.imd.devbuster.db;
 
 import android.content.Context;
 import android.database.sqlite.SQLiteDatabase;
@@ -11,7 +11,7 @@ public class BancoAdmin extends SQLiteOpenHelper {
 
     @Override
     public void onCreate(SQLiteDatabase banco) {
-        banco.execSQL("CREATE TABLE PRODUTOS (ID INT PRIMARY KEY, NOME TEXT, DURATION INT, GENRE TEXT, IMAGE BLOB)");
+        banco.execSQL("CREATE TABLE MEDIA (ID INT PRIMARY KEY, NAME TEXT, GENRE TEXT, DURATION INT)");
     }
 
     @Override

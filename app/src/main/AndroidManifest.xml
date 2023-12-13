@@ -10,13 +10,10 @@
         android:label="@string/app_name"
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
-        android:theme="@style/Theme.Dev_Buster"
+        android:theme="@style/Theme.DevBuster"
         tools:targetApi="31">
         <activity
             android:name=".CRUD.UpdateMedia"
-            android:exported="false" />
-        <activity
-            android:name=".CRUD.ListMedia"
             android:exported="false" />
         <activity
             android:name=".CRUD.DeleteMedia"
@@ -31,10 +28,13 @@
             android:name=".UserAuthentication.ForgottenLogin"
             android:exported="false" />
         <activity
-            android:name=".MainActivity"
+            android:name=".UserAuthentication.Login"
             android:exported="false" />
         <activity
-            android:name=".UserAuthentication.Login"
+            android:name=".CRUD.ListMedia"
+            android:exported="false" />
+        <activity
+            android:name=".MainActivity"
             android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />

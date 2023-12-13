@@ -1,4 +1,4 @@
-package br.com.god.dev_buster;
+package br.ufrn.imd.devbuster;
 
 import androidx.appcompat.app.AppCompatActivity;
 
@@ -7,10 +7,10 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 
-import br.com.god.dev_buster.CRUD.CreateMedia;
-import br.com.god.dev_buster.CRUD.DeleteMedia;
-import br.com.god.dev_buster.CRUD.ListMedia;
-import br.com.god.dev_buster.CRUD.UpdateMedia;
+import br.ufrn.imd.devbuster.CRUD.CreateMedia;
+import br.ufrn.imd.devbuster.CRUD.DeleteMedia;
+import br.ufrn.imd.devbuster.CRUD.ListMedia;
+import br.ufrn.imd.devbuster.CRUD.UpdateMedia;
 
 public class MainActivity extends AppCompatActivity {
 
@@ -35,7 +35,7 @@ public class MainActivity extends AppCompatActivity {
     private void OnClickListenerSetCRUD(Button btn, Class<?> cls ) {
         btn.setOnClickListener(new View.OnClickListener() {
             @Override
-            public void onClick(View view) {
+            public void onClick(View v) {
                 Intent intent = new Intent(MainActivity.this, cls);
                 startActivity(intent);
                 finish();

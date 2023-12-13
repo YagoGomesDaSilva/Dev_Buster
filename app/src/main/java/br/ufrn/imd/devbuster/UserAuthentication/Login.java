@@ -1,4 +1,4 @@
-package br.com.god.dev_buster.UserAuthentication;
+package br.ufrn.imd.devbuster.UserAuthentication;
 
 import androidx.appcompat.app.AppCompatActivity;
 
@@ -12,8 +12,8 @@ import android.widget.EditText;
 import android.widget.TextView;
 import android.widget.Toast;
 
-import br.com.god.dev_buster.MainActivity;
-import br.com.god.dev_buster.R;
+import br.ufrn.imd.devbuster.MainActivity;
+import br.ufrn.imd.devbuster.R;
 
 public class Login extends AppCompatActivity {
 
@@ -48,7 +48,7 @@ public class Login extends AppCompatActivity {
         btn_SignIn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                SharedPreferences credentials = getSharedPreferences("credentials", Context.MODE_PRIVATE);
+                SharedPreferences credentials = getSharedPreferences("credentials", Context .MODE_PRIVATE);
 
                 String credential = credentials.getString(et_UserName.getText().toString(), "");
                 if(credential.isEmpty()){

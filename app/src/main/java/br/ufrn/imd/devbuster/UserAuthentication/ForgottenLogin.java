@@ -1,4 +1,4 @@
-package br.com.god.dev_buster.UserAuthentication;
+package br.ufrn.imd.devbuster.UserAuthentication;
 
 import androidx.appcompat.app.AppCompatActivity;
 
@@ -11,7 +11,7 @@ import android.widget.Button;
 import android.widget.TextView;
 import android.widget.Toast;
 
-import br.com.god.dev_buster.R;
+import br.ufrn.imd.devbuster.R;
 
 public class ForgottenLogin extends AppCompatActivity {
 

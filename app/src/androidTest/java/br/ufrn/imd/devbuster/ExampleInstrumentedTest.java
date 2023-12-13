@@ -1,4 +1,4 @@
-package br.com.god.dev_buster;
+package br.ufrn.imd.devbuster;
 
 import android.content.Context;
 
@@ -21,6 +21,6 @@ public class ExampleInstrumentedTest {
     public void useAppContext() {
         // Context of the app under test.
         Context appContext = InstrumentationRegistry.getInstrumentation().getTargetContext();
-        assertEquals("br.com.god.dev_buster", appContext.getPackageName());
+        assertEquals("br.ufrn.imd.devbuster", appContext.getPackageName());
     }
 }
