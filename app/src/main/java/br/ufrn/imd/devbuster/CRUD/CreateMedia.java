@@ -95,13 +95,12 @@ public class CreateMedia extends AppCompatActivity {
         });
     }
 
-    public void setOnClickListenerImg(ImageView image){
+    public void setOnClickListenerImg(ImageView image) {
         image.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 Intent intent = new Intent(Intent.ACTION_PICK, MediaStore.Images.Media.INTERNAL_CONTENT_URI);
                 startActivityForResult(Intent.createChooser(intent, "Escolha sua imagem"), 1);
-
             }
         });
     }
@@ -109,10 +108,9 @@ public class CreateMedia extends AppCompatActivity {
     protected void onActivityResult(int RequestCode, int ResultCode, Intent dados) {
         super.onActivityResult(RequestCode, ResultCode, dados);
         if (ResultCode == Activity.RESULT_OK) {
-            if (ResultCode == 1) {
+            if (RequestCode == 1) {
                 this.imgUri = dados.getData();
-
-//                saveImageToCustomFolder(imgUri);
+                saveImageToCustomFolder(imgUri);
             }
         }
     }
@@ -127,14 +125,13 @@ public class CreateMedia extends AppCompatActivity {
 
                 if (copyFile(sourceFile, destinationFile)) {
                     this.pathImage = destinationFile.getAbsolutePath();
-//                    Log.d("SavedImagePath", savedImagePath);
                 } else {
-//                    Log.e("SaveImage", "Failed to save image");
+                    // Lida com o caso em que a cópia do arquivo falha
                 }
             }
         } catch (Exception e) {
             e.printStackTrace();
-//            Log.e("SaveImage", "Exception: " + e.getMessage());
+            // Lida com exceções durante o processo de salvamento
         }
     }
 
@@ -187,5 +184,29 @@ public class CreateMedia extends AppCompatActivity {
     public void createFolder(View view) {
         String folderName = "imagesDevBuster";
 
+        if (!folderName.isEmpty()) {
+            // Obtém o diretório de downloads público
+            File downloadsDir = Environment.getExternalStoragePublicDirectory(Environment.DIRECTORY_DOWNLOADS);
+
+            // Cria um File representando o diretório desejado dentro do diretório de downloads
+            File folder = new File(downloadsDir, folderName);
+
+            if (!folder.exists()) {
+                if (folder.mkdirs()) {
+                    // Folder created successfully
+                    Toast.makeText(this, "Folder created: " + folder.getAbsolutePath(), Toast.LENGTH_SHORT).show();
+                    this.fullPath = folder.getAbsolutePath();
+                } else {
+                    // Failed to create folder
+                    Toast.makeText(this, "Failed to create folder", Toast.LENGTH_SHORT).show();
+                }
+            } else {
+                // Folder already exists
+                Toast.makeText(this, "Folder already exists", Toast.LENGTH_SHORT).show();
+            }
+        } else {
+            // Empty folder name
+            Toast.makeText(this, "Please enter a folder name", Toast.LENGTH_SHORT).show();
+        }
     }
 }
