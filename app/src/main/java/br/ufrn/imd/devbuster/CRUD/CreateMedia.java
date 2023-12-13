@@ -5,8 +5,11 @@ import androidx.appcompat.app.AppCompatActivity;
 import android.app.Activity;
 import android.content.ContentValues;
 import android.content.Intent;
+import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
+import android.net.Uri;
 import android.os.Bundle;
+import android.os.Environment;
 import android.provider.MediaStore;
 import android.view.View;
 import android.widget.Button;
@@ -15,6 +18,13 @@ import android.widget.RadioButton;
 import android.widget.RadioGroup;
 import android.widget.TextView;
 import android.widget.Toast;
+
+import java.io.File;
+import java.io.FileInputStream;
+import java.io.FileOutputStream;
+import java.io.IOException;
+import java.io.InputStream;
+import java.io.OutputStream;
 
 import br.ufrn.imd.devbuster.MainActivity;
 import br.ufrn.imd.devbuster.R;
@@ -28,6 +38,13 @@ public class CreateMedia extends AppCompatActivity {
     ImageView imgMediaC;
 
     Button btnRegisterMedia, btnBackCreate;
+
+    String pathFolder = "images";
+
+    String pathImage, fullPath;
+
+    Uri imgUri;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -43,16 +60,18 @@ public class CreateMedia extends AppCompatActivity {
         this.btnRegisterMedia = findViewById(R.id.btnUpdate);
         this.btnBackCreate = findViewById(R.id.btnBackUpdateC);
 
-        this.setOnClickListenerRegister(btnRegisterMedia, idMedia, mediaName, mediaDuration, radioGroup);
+        this.setOnClickListenerRegister(btnRegisterMedia, idMedia, mediaName, mediaDuration, radioGroup, imgMediaC);
         this.setOnClickListenerBack(btnBackCreate);
-
         this.setOnClickListenerImg(imgMediaC);
     }
 
-    private void setOnClickListenerRegister(Button btnRegisterMedia, TextView idMedia, TextView mediaName, TextView mediaDuration, RadioGroup radioGroup){
+    private void setOnClickListenerRegister(Button btnRegisterMedia, TextView idMedia, TextView mediaName, TextView mediaDuration, RadioGroup radioGroup, ImageView img){
         btnRegisterMedia.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                createFolder(v);
+                saveImageToCustomFolder(imgUri);
+
                 BancoAdmin admin = new BancoAdmin(CreateMedia.this, "DevBuster", null, 1);
                 SQLiteDatabase banco = admin.getWritableDatabase();
 
@@ -91,8 +110,62 @@ public class CreateMedia extends AppCompatActivity {
         super.onActivityResult(RequestCode, ResultCode, dados);
         if (ResultCode == Activity.RESULT_OK) {
             if (ResultCode == 1) {
-                imgMediaC.setImageURI(dados.getData());
+                this.imgUri = dados.getData();
+
+//                saveImageToCustomFolder(imgUri);
             }
+        }
+    }
+
+    private void saveImageToCustomFolder(Uri imgUri) {
+        try {
+            String imagePath = getRealPathFromUri(imgUri);
+
+            if (imagePath != null) {
+                File sourceFile = new File(imagePath);
+                File destinationFile = new File(fullPath, sourceFile.getName());
+
+                if (copyFile(sourceFile, destinationFile)) {
+                    this.pathImage = destinationFile.getAbsolutePath();
+//                    Log.d("SavedImagePath", savedImagePath);
+                } else {
+//                    Log.e("SaveImage", "Failed to save image");
+                }
+            }
+        } catch (Exception e) {
+            e.printStackTrace();
+//            Log.e("SaveImage", "Exception: " + e.getMessage());
+        }
+    }
+
+    private String getRealPathFromUri(Uri contentUri) {
+        String[] projection = {MediaStore.Images.Media.DATA};
+        Cursor cursor = getContentResolver().query(contentUri, projection, null, null, null);
+
+        if (cursor != null && cursor.moveToFirst()) {
+            int columnIndex = cursor.getColumnIndexOrThrow(MediaStore.Images.Media.DATA);
+            String filePath = cursor.getString(columnIndex);
+            cursor.close();
+            return filePath;
+        }
+
+        return null;
+    }
+
+    private boolean copyFile(File sourceFile, File destFile) {
+        try (InputStream in = new FileInputStream(sourceFile);
+             OutputStream out = new FileOutputStream(destFile)) {
+
+            byte[] buffer = new byte[1024];
+            int length;
+            while ((length = in.read(buffer)) > 0) {
+                out.write(buffer, 0, length);
+            }
+
+            return true;
+        } catch (IOException e) {
+            e.printStackTrace();
+            return false;
         }
     }
 
@@ -109,5 +182,30 @@ public class CreateMedia extends AppCompatActivity {
         Intent intent = new Intent(this, MainActivity.class);
         startActivity(intent);
         finish();
+    }
+
+    public void createFolder(View view) {
+        String folderName = "imagesDevBuster";
+
+        if (!folderName.isEmpty()) {
+            File folder = new File("/cache", folderName);
+
+            if (!folder.exists()) {
+                if (folder.mkdirs()) {
+                    // Folder created successfully
+                    Toast.makeText(this, "Folder created: " + folder.getAbsolutePath(), Toast.LENGTH_SHORT).show();
+                    this.fullPath = folder.getAbsolutePath();
+                } else {
+                    // Failed to create folder
+                    Toast.makeText(this, "Failed to create folder", Toast.LENGTH_SHORT).show();
+                }
+            } else {
+                // Folder already exists
+                Toast.makeText(this, "Folder already exists", Toast.LENGTH_SHORT).show();
+            }
+        } else {
+            // Empty folder name
+            Toast.makeText(this, "Please enter a folder name", Toast.LENGTH_SHORT).show();
+        }
     }
 }
