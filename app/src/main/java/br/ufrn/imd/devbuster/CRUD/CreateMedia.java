@@ -2,12 +2,15 @@ package br.ufrn.imd.devbuster.CRUD;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.app.Activity;
 import android.content.ContentValues;
 import android.content.Intent;
 import android.database.sqlite.SQLiteDatabase;
 import android.os.Bundle;
+import android.provider.MediaStore;
 import android.view.View;
 import android.widget.Button;
+import android.widget.ImageView;
 import android.widget.RadioButton;
 import android.widget.RadioGroup;
 import android.widget.TextView;
@@ -22,6 +25,8 @@ public class CreateMedia extends AppCompatActivity {
 
     RadioGroup radioGroup;
 
+    ImageView imgMediaC;
+
     Button btnRegisterMedia, btnBackCreate;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -31,13 +36,17 @@ public class CreateMedia extends AppCompatActivity {
         this.idMedia = findViewById(R.id.idMediaC);
         this.mediaName = findViewById(R.id.mediaNameC);
         this.mediaDuration = findViewById(R.id.mediaDurationC);
-        this.radioGroup = findViewById(R.id.radioGroupU);
+        this.radioGroup = findViewById(R.id.radioGroupC);
+
+        this.imgMediaC = findViewById(R.id.imgMediaC);
 
         this.btnRegisterMedia = findViewById(R.id.btnUpdate);
         this.btnBackCreate = findViewById(R.id.btnBackUpdateC);
 
         this.setOnClickListenerRegister(btnRegisterMedia, idMedia, mediaName, mediaDuration, radioGroup);
         this.setOnClickListenerBack(btnBackCreate);
+
+        this.setOnClickListenerImg(imgMediaC);
     }
 
     private void setOnClickListenerRegister(Button btnRegisterMedia, TextView idMedia, TextView mediaName, TextView mediaDuration, RadioGroup radioGroup){
@@ -65,6 +74,26 @@ public class CreateMedia extends AppCompatActivity {
                 BackIntent();
             }
         });
+    }
+
+    public void setOnClickListenerImg(ImageView image){
+        image.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(Intent.ACTION_PICK, MediaStore.Images.Media.INTERNAL_CONTENT_URI);
+                startActivityForResult(Intent.createChooser(intent, "Escolha sua imagem"), 1);
+
+            }
+        });
+    }
+
+    protected void onActivityResult(int RequestCode, int ResultCode, Intent dados) {
+        super.onActivityResult(RequestCode, ResultCode, dados);
+        if (ResultCode == Activity.RESULT_OK) {
+            if (ResultCode == 1) {
+                imgMediaC.setImageURI(dados.getData());
+            }
+        }
     }
 
     private void setOnClickListenerBack(Button btn ){

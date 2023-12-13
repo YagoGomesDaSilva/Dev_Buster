@@ -2,12 +2,15 @@ package br.ufrn.imd.devbuster.CRUD;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.app.Activity;
 import android.content.ContentValues;
 import android.content.Intent;
 import android.database.sqlite.SQLiteDatabase;
 import android.os.Bundle;
+import android.provider.MediaStore;
 import android.view.View;
 import android.widget.Button;
+import android.widget.ImageView;
 import android.widget.RadioButton;
 import android.widget.RadioGroup;
 import android.widget.TextView;
@@ -23,6 +26,8 @@ public class UpdateMedia extends AppCompatActivity {
 
     TextView idMediaU, mediaNameU, mediaDurationU;
 
+    ImageView imgMediaU;
+
     RadioGroup radioGroup;
 
     @Override
@@ -35,11 +40,15 @@ public class UpdateMedia extends AppCompatActivity {
         this.mediaDurationU = findViewById(R.id.mediaDurationU);
         this.radioGroup = findViewById(R.id.radioGroupU);
 
+        this.imgMediaU = findViewById(R.id.imgMediaU);
+
         this.btn_Update_CRUD = findViewById(R.id.btnUpdate);
         this.btn_BackUpdate_CRUD = findViewById(R.id.btnBackUpdateU);
 
         setOnClickListenerUpdate(btn_Update_CRUD, idMediaU, mediaNameU, mediaDurationU, radioGroup);
         this.setOnClickListenerBack(btn_BackUpdate_CRUD);
+
+        this.setOnClickListenerImg(imgMediaU);
     }
 
     private void setOnClickListenerUpdate(Button btn, TextView idMediaU,TextView mediaNameU, TextView  mediaDurationU, RadioGroup radioGroup){
@@ -74,6 +83,26 @@ public class UpdateMedia extends AppCompatActivity {
 
             }
         });
+    }
+
+    public void setOnClickListenerImg(ImageView image){
+        image.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(Intent.ACTION_PICK, MediaStore.Images.Media.INTERNAL_CONTENT_URI);
+                startActivityForResult(Intent.createChooser(intent, "Escolha sua imagem"), 1);
+
+            }
+        });
+    }
+
+    protected void onActivityResult(int RequestCode, int ResultCode, Intent dados) {
+        super.onActivityResult(RequestCode, ResultCode, dados);
+        if (ResultCode == Activity.RESULT_OK) {
+            if (ResultCode == 1) {
+                imgMediaU.setImageURI(dados.getData());
+            }
+        }
     }
 
     private void setOnClickListenerBack(Button btn ){
