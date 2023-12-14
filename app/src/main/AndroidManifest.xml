@@ -28,13 +28,13 @@
             android:name=".UserAuthentication.ForgottenLogin"
             android:exported="false" />
         <activity
-            android:name=".UserAuthentication.Login"
+            android:name=".MainActivity"
             android:exported="false" />
         <activity
             android:name=".CRUD.ListMedia"
             android:exported="false" />
         <activity
-            android:name=".MainActivity"
+            android:name=".UserAuthentication.Login"
             android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
