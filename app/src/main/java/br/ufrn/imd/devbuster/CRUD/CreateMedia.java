@@ -100,6 +100,7 @@ public class CreateMedia extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 Intent intent = new Intent(Intent.ACTION_PICK, MediaStore.Images.Media.INTERNAL_CONTENT_URI);
+                intent.setType("image/*");
                 startActivityForResult(Intent.createChooser(intent, "Escolha sua imagem"), 1);
             }
         });
@@ -107,12 +108,15 @@ public class CreateMedia extends AppCompatActivity {
 
     protected void onActivityResult(int RequestCode, int ResultCode, Intent dados) {
         super.onActivityResult(RequestCode, ResultCode, dados);
-        if (ResultCode == Activity.RESULT_OK) {
-            if (RequestCode == 1) {
-                this.imgUri = dados.getData();
-                saveImageToCustomFolder(imgUri);
-            }
+
+        if (RequestCode == 1) {
+            this.imgUri = dados.getData();
+            saveImageToCustomFolder(imgUri);
         }
+//
+//        if (ResultCode == Activity.RESULT_OK) {
+//
+//        }
     }
 
     private void saveImageToCustomFolder(Uri imgUri) {
